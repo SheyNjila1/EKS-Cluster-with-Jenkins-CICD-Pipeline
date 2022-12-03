@@ -19,10 +19,10 @@
   ```
 ## b) JDK-11 
 ### Use the following command to install Java 11
-  ```
+ ```
   sudo apt update -y
   sudo apt install openjdk-11-jdk -y
-  ```
+ ```
 
  ## c) Jenkins
  ### i) Use the following Command to download and install Jenkins
