@@ -23,32 +23,33 @@
 
 ## a) Docker
 ### Use the following commands to install Docker on Ubuntu 20.04 
-  ```
-  sudo apt update -y 
+---
+sudo apt update -y 
   sudo apt install docker.io -y
   sudo systemctl start docker
   sudo systemctl enable docker.service
   sudo systemctl status docker.service
-  ```
+---
+  
+  
 #### Make sure Docker is up and running
 
 ![Docker-up and running](https://user-images.githubusercontent.com/96470430/205451533-f64f83b7-20c1-4c64-8c7e-ec5c9a033fd5.PNG)
 
 ## b) JDK-11 
 ### Use the following command to install Java 11
-  ```
+```
   sudo apt update -y
   sudo apt install openjdk-11-jdk -y
   java --version 
-  ```
+```
 #### Check the Java Version that has been installed:
 ![image](https://user-images.githubusercontent.com/96470430/205451734-2d62dd6b-c1a5-43f7-9dd7-cb37ce8d3c44.png)
 
 
  ## c) Jenkins
  ### i) Use the following Command to download and install Jenkins
-    
-     ```
+ ```
      
     wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
     sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
@@ -58,31 +59,31 @@
     sudo usermod -aG docker jenkins
     sudo systemctl restart docker.service
     sudo service jenkins status
-    ```
+```
  ### ii) Add Jenkins user to Docker group
  #### Add jenkins user to Docker group to allow Jenkins to access Docker and build application Docker images. 
  
-      ```
+```
       sudo usermod -aG docker jenkins
-      ```
+```
  ### iii) Add jenkins to sudoers
  #### It is important to add jenkins user as an administrator and also as NOPASSWD so that no password will be asked during the pipeline run/execution.
  
-      ```
+ ```
       sudo vim /etc/sudoers
-      ```
+ ```
  #### add the following line under sudoers group section 
-      ```
+```
       jenkins ALL=(ALL) NOPASSWD: ALL 
-      ```
+```
   ##### jenkins now has admin previleges
   ![Sudoers](https://user-images.githubusercontent.com/96470430/205452567-8a0a04dd-cbe8-49ac-8bd9-f9cc962ef077.PNG)
 
 
  #### Now, run the following command to use jenkins as root user 
-      ```
+```
       sudo su - jenkins
-      ```
+```
  ##### Make sure Jenkins server is active(running) as shown below:
  
  ![Jenkins-active-running](https://user-images.githubusercontent.com/96470430/205452962-0b819b7a-f5ef-41f8-96bf-6cb617667984.PNG)
@@ -92,9 +93,9 @@
 
 #### Obtaining initialAdminPassword password if accessing for the first time. Copy the ***/var/lib/jenkins/secrets/initialAdminPassword***  and cat to display the password that will be used to access Jenkins
 
-    ```
+```
     cat /var/lib/jenkins/secrets/initialAdminPassword
-    ```
+```
     
 ![JenkinsInitialPassword](https://user-images.githubusercontent.com/96470430/205453498-fa130886-3633-431e-87ef-1b3dd924f3a4.PNG)
  
@@ -116,39 +117,38 @@
 
 ## d) Install Git, python and ansible 
 #### Use the following commands 
-    ```
+```
     sudo apt install git -y
     apt install python-is-python3 -y  # sudo apt install python -y is obsolate or not just working here
     sudo apt install python-pip -y
     # pip3 install ansible -y
-    ```
+```
 ## e) Install AWS CLI
 #### Install awscli---->https://docs.aws.amazon.com/cli/v1/userguide/install-linux.html 
-    ```
+```
     sudo apt install wget -y
     sudo apt update -y
     sudo apt install unzip 
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     unzip awscliv2.zip
     sudo ./aws/install
-    ```
+```
     #### Verify that AWS CLI is properly installed:
     
    ![AWS-CLI](https://user-images.githubusercontent.com/96470430/205454839-86dfd495-5d21-4b50-8cd3-f5a5b61c4ef8.PNG)
 
 #### Configure AWS CLI: This configuration is needed so that AWS CLI can authenticate and communicate with Amazon AWS
-    ```
+```
     aws configure
     
-    ```
+```
     
    ![AWS configure](https://user-images.githubusercontent.com/96470430/205456027-58ca2289-5360-45bd-9ef7-4d3ca614b1c6.PNG)
 
 ## f) Install Kubectl
-##### https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux
-    
-    ```
-    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+##### https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux  
+ ```
+ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
     curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
     echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
     sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
@@ -156,24 +156,24 @@
     kubectl
     kubectl version --client
     kubectl version --client --output=yaml
-    ```
+ ```
 #### Kubectl is installed
 ![Kubctl-installed and version confirmed](https://user-images.githubusercontent.com/96470430/205454986-f76b3ea1-6517-4f54-9292-2bddcc380cc6.PNG)
 
 ## g) Install eksctl: It is used to create AWS EKS clusters
      
-     ```
+ ```
      curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
      sudo mv /tmp/eksctl /usr/local/bin 
      eksctl version
-     ```
+ ```
  ##### eksctl installed:
 ![eksctl-installed](https://user-images.githubusercontent.com/96470430/205455126-db4b27ec-8e9e-43c1-bbae-cd150d676a7d.PNG)
 
 ## NOTE!!!! Other tools not needed in this specific project
 ##### a) Install minikube---->https://medium.com/@ruslanfg/getting-started-fast-with-kubernetes-39097c9fede2
      
-     ```
+ ```
     curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
     curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
     echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
@@ -181,23 +181,23 @@
     sudo curl -sLo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     sudo mv ./minikube /usr/local/bin                           
     sudo chmod a+x /usr/local/bin/minikube
-    ```
+```
 ##### b) Install kops software on ubuntu---->https://github.com/kubernetes/kops/blob/master/docs/install.md
      
-     ```
+```
     sudo apt install wget -y
     sudo wget https://github.com/kubernetes/kops/releases/download/v1.18.2/kops-linux-amd64
     sudo chmod +x kops-linux-amd64
     sudo mv kops-linux-amd64 /usr/local/bin/kops
-    ```
+```
 ##### c) # Setup Jenkins to start at boot
-     
-     ``` 
+    
+``` 
       sudo apt install git -y
       sudo apt install python -y
       sudo apt install python-pip -y
       pip3 install ansible -y
-      ```
+```
 
 # 3. Setup Gradle: It is a build tool for compilation and building the JAR file  
 ##### Goto -> Manage Jenkins -> Global Tool Configuration -> Gradle
@@ -234,4 +234,49 @@ eksctl create cluster --name shey-eks-cluster --version 1.24 --region us-east-1 
 
 
 # 5. Integrate Dockerhub and Github with Jenkins
-# 5. Build, deploy and exscute Jenkins CICD Pipline
+### GitHub and DockerHub credentials are necesaasry to accomplish this task
+#### ###Goto -> Jenkins -> Manage Jenkins -> Manage Credentials -> Stored scoped to jenkins -> global -> Add Credentials###
+#### DockerHub Credentials
+![DockerHubCredentials](https://user-images.githubusercontent.com/96470430/205459482-17e0b334-9538-46a4-a669-374555662094.PNG)
+#### GitHub Credentials : GitHub Username and password into Jenkins
+![GitHub Crdentials](https://user-images.githubusercontent.com/96470430/205459637-57abdca9-6bde-4fff-9b62-f5f9d2143756.PNG)
+
+# 6. Jenkins Stages for Pipepline
+#### a) Checkout the GitHub Repository
+```
+stage("Git Clone"){
+
+        git credentialsId: 'GIT_HUB_CREDENTIALS', url: 'https://github.com/rahulwagh/k8s-jenkins-aws'
+    }
+```
+#### b) Gradle Compilation: This compiles and builds the application using 
+```
+stage('Gradle Build') {
+    sh './gradlew build'
+}
+
+```
+#### c) Create and Push DOcker container to DOcker Hub . This only possible after successful compilation and build 
+'''
+stage("Docker build"){
+    sh 'docker version'
+    sh 'docker build -t jhooq-docker-demo .'
+    sh 'docker image list'
+    sh 'docker tag shey-docker-image sheynjila/shey-docker-image:shey-docker-image'
+}
+
+stage("Push Image to Docker Hub"){
+        sh 'docker push  sheynjila/shey-docker-image:shey-docker-image'
+}
+
+'''
+d) Kubernetes Deployment
+
+```
+stage("kubernetes deployment"){
+  sh 'kubectl apply -f k8s-spring-boot-deployment.yml'
+}
+```
+
+# 5. Build, deploy and execute Jenkins CICD Pipline
+
