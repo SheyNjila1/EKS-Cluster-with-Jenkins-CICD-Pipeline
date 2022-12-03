@@ -37,8 +37,7 @@
     ```
  ### ii) Add Jenkins user to Docker group
  #### Add jenkins user to Docker group to allow Jenkins to access Docker and build application Docker images. 
-      ```
-      sudo usermod -aG docker jenkins
+      ```sudo usermod -aG docker jenkins
       ```
  ### iii) Add jenkins to sudoers
  #### It is important to add jenkins user as an administrator and also as NOPASSWD so that no password will be asked during the pipeline run/execution.
