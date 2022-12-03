@@ -234,4 +234,49 @@ eksctl create cluster --name shey-eks-cluster --version 1.24 --region us-east-1 
 
 
 # 5. Integrate Dockerhub and Github with Jenkins
-# 5. Build, deploy and exscute Jenkins CICD Pipline
+### GitHub and DockerHub credentials are necesaasry to accomplish this task
+#### ###Goto -> Jenkins -> Manage Jenkins -> Manage Credentials -> Stored scoped to jenkins -> global -> Add Credentials###
+#### DockerHub Credentials
+![DockerHubCredentials](https://user-images.githubusercontent.com/96470430/205459482-17e0b334-9538-46a4-a669-374555662094.PNG)
+#### GitHub Credentials : GitHub Username and password into Jenkins
+![GitHub Crdentials](https://user-images.githubusercontent.com/96470430/205459637-57abdca9-6bde-4fff-9b62-f5f9d2143756.PNG)
+
+# 6. Jenkins Stages for Pipepline
+#### a) Checkout the GitHub Repository
+```
+stage("Git Clone"){
+
+        git credentialsId: 'GIT_HUB_CREDENTIALS', url: 'https://github.com/rahulwagh/k8s-jenkins-aws'
+    }
+```
+#### b) Gradle Compilation: This compiles and builds the application using 
+```
+stage('Gradle Build') {
+    sh './gradlew build'
+}
+
+```
+#### c) Create and Push DOcker container to DOcker Hub . This only possible after successful compilation and build 
+'''
+stage("Docker build"){
+    sh 'docker version'
+    sh 'docker build -t jhooq-docker-demo .'
+    sh 'docker image list'
+    sh 'docker tag shey-docker-image sheynjila/shey-docker-image:shey-docker-image'
+}
+
+stage("Push Image to Docker Hub"){
+        sh 'docker push  sheynjila/shey-docker-image:shey-docker-image'
+}
+
+'''
+d) Kubernetes Deployment
+
+```
+stage("kubernetes deployment"){
+  sh 'kubectl apply -f k8s-spring-boot-deployment.yml'
+}
+```
+
+# 5. Build, deploy and execute Jenkins CICD Pipline
+
