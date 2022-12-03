@@ -87,7 +87,7 @@
      curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
      sudo mv /tmp/eksctl /usr/local/bin 
      eksctl version
-      ```
+     ```
 ## NOTE!!!! Other tools not needed in this specific project
 ##### a) Install minikube---->https://medium.com/@ruslanfg/getting-started-fast-with-kubernetes-39097c9fede2
      ```
@@ -100,7 +100,7 @@
     sudo chmod a+x /usr/local/bin/minikube
     ```
 ##### b) #Install kops software on ubuntu---->https://github.com/kubernetes/kops/blob/master/docs/install.md
-    ```
+     ```
     sudo apt install wget -y
     sudo wget https://github.com/kubernetes/kops/releases/download/v1.18.2/kops-linux-amd64
     sudo chmod +x kops-linux-amd64
