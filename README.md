@@ -19,14 +19,15 @@
   ```
 ## b) JDK-11 
 ### Use the following command to install Java 11
- ```
+  ```
   sudo apt update -y
   sudo apt install openjdk-11-jdk -y
- ```
+  ```
 
  ## c) Jenkins
  ### i) Use the following Command to download and install Jenkins
-    ```
+    
+     ```
     wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
     sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
     sudo apt update -y
@@ -37,7 +38,8 @@
     ```
  ### ii) Add Jenkins user to Docker group
  #### Add jenkins user to Docker group to allow Jenkins to access Docker and build application Docker images. 
-      ```sudo usermod -aG docker jenkins
+      ```
+      sudo usermod -aG docker jenkins
       ```
  ### iii) Add jenkins to sudoers
  #### It is important to add jenkins user as an administrator and also as NOPASSWD so that no password will be asked during the pipeline run/execution.
@@ -72,6 +74,7 @@
     ```
 ## f) Install Kubectl
 ##### https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux
+    
     ```
     curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
     curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
@@ -83,6 +86,7 @@
     kubectl version --client --output=yaml
     ```
 ## g) Install eksctl: It is used to create AWS EKS clusters
+     
      ```
      curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
      sudo mv /tmp/eksctl /usr/local/bin 
@@ -90,6 +94,7 @@
      ```
 ## NOTE!!!! Other tools not needed in this specific project
 ##### a) Install minikube---->https://medium.com/@ruslanfg/getting-started-fast-with-kubernetes-39097c9fede2
+     
      ```
     curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
     curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
@@ -100,6 +105,7 @@
     sudo chmod a+x /usr/local/bin/minikube
     ```
 ##### b) #Install kops software on ubuntu---->https://github.com/kubernetes/kops/blob/master/docs/install.md
+     
      ```
     sudo apt install wget -y
     sudo wget https://github.com/kubernetes/kops/releases/download/v1.18.2/kops-linux-amd64
