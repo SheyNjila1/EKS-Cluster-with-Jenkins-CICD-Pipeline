@@ -216,6 +216,22 @@
 eksctl create cluster --name shey-eks-cluster --version 1.24 --region us-east-1 --nodegroup-name worker-nodes --node-type t2.micro --nodes 3
 
 ```
+### Cluster Completely created as shown in CLI 
+![Cluster Creation Completed](https://user-images.githubusercontent.com/96470430/205457497-60587abf-2f6c-4f6f-b507-b81cb1541dde.PNG)
+
+### Cloudformation stacks created as the Networking component for the cluster 
+![Cloudformation Stacks](https://user-images.githubusercontent.com/96470430/205457585-bef9b179-f5b1-4a06-8ad9-a3e72304ffd3.PNG)
+### Cluster VPC Created with al networking compenets
+![Cluster-VPC-Created](https://user-images.githubusercontent.com/96470430/205457656-aaa5fff8-edfd-4858-b018-26d46aaa6e4d.PNG)
+### Worker nodes running in EC2 console. Master node is managed and not displayed
+![Workernodes instances](https://user-images.githubusercontent.com/96470430/205457789-9b599654-160f-46c6-8fa9-b7a5c2487cea.PNG)
+### EKS cluster is created
+![EKS-Cluster-created](https://user-images.githubusercontent.com/96470430/205457890-4a99c74b-fca4-4af0-939f-19e935b50804.PNG)
+
+### Cluster showing three worker nodes as expected
+![Cluster with three worker nodes](https://user-images.githubusercontent.com/96470430/205457884-00061def-fe6c-4699-a6b4-c437051384bb.PNG)
+
+
 
 # 5. Integrate Dockerhub and Github with Jenkins
 # 5. Build, deploy and exscute Jenkins CICD Pipline
