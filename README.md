@@ -2,10 +2,13 @@
 
 
 # 1. Launch Amazon EC2 Instance
+
 ### - Ubuntu 20.04   NOTE: Can use any other operating system of your choice 
 ### - t2.medium
 ### - Create Security Group and open ports 22, 80, 443, and 8080 with all traffic private (my IP)
 ### - Key pair for SSH 
+
+
 # 2. SSH into Amazon EC2 inatance and install and configure the following packages 
 
 ## a) Docker
