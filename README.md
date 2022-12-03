@@ -23,13 +23,15 @@
 
 ## a) Docker
 ### Use the following commands to install Docker on Ubuntu 20.04 
-  ```
-  sudo apt update -y 
+---
+sudo apt update -y 
   sudo apt install docker.io -y
   sudo systemctl start docker
   sudo systemctl enable docker.service
   sudo systemctl status docker.service
-  ```
+---
+  
+  
 #### Make sure Docker is up and running
 
 ![Docker-up and running](https://user-images.githubusercontent.com/96470430/205451533-f64f83b7-20c1-4c64-8c7e-ec5c9a033fd5.PNG)
