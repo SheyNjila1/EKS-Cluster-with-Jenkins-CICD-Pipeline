@@ -16,7 +16,7 @@
 ![EC2-Ubuntu](https://user-images.githubusercontent.com/96470430/205451032-05bb077b-80ca-469a-9b5b-cd9ef7860c1a.PNG)
 
 
-# 2. SSH into Amazon EC2 inatance and install and configure the following packages. 
+# 2. SSH into Amazon EC2 instance and install and configure the following packages. 
 #### Here I use PowerShell but there are other options like Putty, MobaXtern, Termius, EC2 Instance Connect, SSM etc
 
 ![SSH-to-Jenkins-Server](https://user-images.githubusercontent.com/96470430/205451173-37dcc714-458d-4a5d-9267-bcbfd298a13f.PNG)
